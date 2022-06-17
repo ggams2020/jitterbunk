@@ -1,0 +1,19 @@
+<!--
+    Code by Genna Gams based off of tutorial from django https://docs.djangoproject.com/en/2.2/intro/
+    The html file for bunks/allbunks/
+-->
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bunks/general.css' %}">
+
+<h1>All Bunks</h1>
+{% if bunks %}
+    <ul>
+    {% for bunk in bunks %}
+        <li>{{bunk}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

@@ -1,0 +1,46 @@
+/*
+    help with full-page gif from https://stackoverflow.com/questions/21590343/how-to-display-a-gif-fullscreen-for-a-webpage-background
+    help with centering text from https://www.w3schools.com/css/css_align.asp
+
+*/
+
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color:lightcoral;
+    
+}
+body{
+    width: 100%;
+    background-image: url('images/background.gif');
+    background-size: cover;
+    
+    padding:0;
+    margin:0;
+
+    padding-left: 10px;
+
+  }
+  .col {
+    float: left;
+    width: 25%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  /* Clear floats after image containers */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+    
+  }
+  a {
+    font-family: 'Courier New', Courier, monospace;
+    color:lightcoral;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+
+  

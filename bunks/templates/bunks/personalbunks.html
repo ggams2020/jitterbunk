@@ -1,0 +1,19 @@
+<!--
+    Code by Genna Gams based off of tutorial from django https://docs.djangoproject.com/en/2.2/intro/
+    The html file for bunks/<username>/
+-->
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bunks/general.css' %}">
+
+<h1>{{user.username}}'s Bunks</h1>
+{% if bunks %}
+<ul>
+    {% for b in bunks %}
+        <li>{{b}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No bunks yet!</p>
+{% endif %}

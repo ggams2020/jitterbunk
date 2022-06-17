@@ -1,0 +1,30 @@
+<!--
+    Code by Genna Gams based off of tutorial from django https://docs.djangoproject.com/en/2.2/intro/
+    The html file for bunks/bunk/
+-->
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bunks/general.css' %}">
+
+<h1>Bunk Someone</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<h3>To:</h3>
+<form action="{% url 'bunks:submitbunk'%}" method="post">
+{% csrf_token %}
+{% for choice in users %}
+    <input type="radio" name="tochoice" id="choice{{ forloop.counter }}" value="{{ choice.username }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.username }}</label><br>
+{% endfor %}
+<br>
+<h3>From:</h3>
+{% for choice in users %}
+    <input type="radio" name="fromchoice" id="choice{{ forloop.counter }}" value="{{ choice.username }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.username }}</label><br>
+{% endfor %}
+
+<input type="submit" value="Bunk">
+</form>
+
+

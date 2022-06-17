@@ -1,0 +1,44 @@
+<!--
+    Code by Genna Gams based off of tutorial from django https://docs.djangoproject.com/en/2.2/intro/
+    The html file for bunks/
+
+    help with figure tag from https://www.w3schools.com/tags/tag_figure.asp
+    help with looping syntax from https://stackoverflow.com/questions/8494209/modulus-in-django-template 
+    help with row/column formatting from https://www.w3schools.com/howto/howto_css_images_side_by_side.asp
+-->
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bunks/style.css' %}">
+
+
+<h1>Welcome to Jitterbunk!</h1>
+
+{% if users %}
+<div class = "row">
+    {% for u in users %}
+        {% if forloop.counter|divisibleby:4 %}
+        <div class="col">
+            <figure>
+                <img src={{u.photo}} alt = {{u.username}} style = "width: 100" height="100"><br>
+                <figcaption><a href="{% url 'bunks:personalbunks' u.username %}">{{u.username}}</a></figcaption>
+            </figure>   
+        </div>
+    </div>
+     <div class = "row">
+        {% else %}
+        <div class = "col">
+            <figure>
+                <img src={{u.photo}} alt = {{u.username}} style = "width: 100" height="100"><br>
+                <figcaption><a href="{% url 'bunks:personalbunks' u.username %}">{{u.username}}</a></figcaption>
+            </figure>
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% else %}
+    <p>No users yet!</p>
+{% endif %} 
+
+
+<h2></h2><a href="{%url 'bunks:bunk'%}">Bunk Someone!</a></h2>
